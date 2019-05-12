@@ -9,7 +9,7 @@ Demonstrate a bug with EXIF rotated images
 
 # Original image
 ![](input.jpg)
-This image should be in a protrait orientation (height > width). Note that your browser/github might still show it as landscape here! Download the file and open it in GIMP, Photoshop or a similar program.
+This image is in a protrait orientation (height > width). Note that your browser/github might still show it as landscape here! Download the file and open it in GIMP, Photoshop or a similar program.
 
 # Output that is broken
 ![](output.jpg)
