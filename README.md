@@ -5,6 +5,7 @@ Demonstrate a bug with EXIF rotated images
 1. checkout this repo
 2. `yarn`
 3. `yarn start`
+4. `output.jpg` should get created in the same directory
 
 # Original image
 ![](input.jpg)
