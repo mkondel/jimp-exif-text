@@ -7,6 +7,23 @@ Demonstrate a bug with EXIF rotated images. There is now a workaround, please se
 3. `yarn start`
 4. `output.jpg` and `output-fixed.jpg` should get created in the same directory
 
+# The fix
+Use the `jpeg-autorotate` lib on the file buffer before passing it to JIMP. Here is the relevant code:
+```javascript
+  const Jimp = require('jimp')
+  const fs = require('fs')
+  const jo = require('jpeg-autorotate')
+
+// instead of this
+  const fileIn = fs.readFileSync('input.jpg')
+  const image = await Jimp.read(fileIn)
+  
+// do this
+  const fileIn = fs.readFileSync('input.jpg')
+  const {buffer} = await jo.rotate(fileIn, {quality: 30})
+  const image = await Jimp.read(buffer)
+```
+
 # Original image
 ![](input.jpg)
 This image is in a protrait orientation (height > width). Note that your browser/github might still show it as landscape here! Download the file and open it in Photoshop or a similar program. Here is how GIMP tells me that there is EXIF rotation data here:
